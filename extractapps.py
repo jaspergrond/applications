@@ -53,10 +53,11 @@ def process_mailbox(M):
         #Body details
         for part in msg.walk():
             if part.get_content_type() == "text/plain":
-                body = part.get_payload(decode=True)
+                body = unicode(part.get_payload(decode=True), errors='ignore')
                 file_name = lastname + "_" + prefname + "_" + datestr + ".txt"
                 output_file = open(file_name, 'w')
-                output_file.write(body.decode('utf-8').replace(u'\u2018',"'").replace(u'\u2019',"'").replace(u'\xe9',"e"))
+                #output_file.write(body.decode('utf-8').replace(u'\u2018',"'").replace(u'\u2019',"'").replace(u'\xe9',"e"))
+                output_file.write(body)
                 output_file.close()
                 appnum=appnum+1
             else:
