@@ -75,7 +75,7 @@ except imaplib.IMAP4.error:
     print "LOGIN FAIL"
     exit()
 
-rv, data = M. select("INBOX")
+rv, data = M. select("SubmittedApps")
 if rv == 'OK':
     print "Processing mailbox\n"
     process_mailbox(M)#do stuff with emails
